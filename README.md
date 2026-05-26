@@ -8,3 +8,22 @@ Notes :-
 Image processing functions 
 
 - preprocess(): It converts the 
+
+
+TRYING SOMETHING DIFFERENT:-
+
+Input Image → VAE Encode → Latent Space
+                      ↓
+          [Reverse Diffusion Loop]
+                      ↓
+   UNet Predicts Noise → Classifier-Free Guidance (CFG)
+                      ↓
+   Predict Clean Latent → VAE Decode → Pixel Image
+                      ↓
+   CLIP Vision Encoder + CLIP Text Encoder → Cosine Similarity Loss
+                      ↓
+   Gradient Backprop to Latents → Adjust Latents
+                      ↓
+   Scheduler Step → Next Denoising Step
+                      ↓
+              Final VAE Decode → Dream Image
